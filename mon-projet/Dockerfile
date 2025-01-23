@@ -33,3 +33,7 @@ EXPOSE 80
 
 # Start Apache server
 CMD ["apache2-foreground"]
+
+COPY apache.conf /etc/apache2/sites-available/000-default.conf
+RUN a2dissite 000-default
+RUN a2ensite 000-default
