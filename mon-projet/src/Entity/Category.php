@@ -67,7 +67,6 @@ class Category
     public function removeOperation(Operations $operation): static
     {
         if ($this->operations->removeElement($operation)) {
-            // set the owning side to null (unless already changed)
             if ($operation->getCategory() === $this) {
                 $operation->setCategory(null);
             }

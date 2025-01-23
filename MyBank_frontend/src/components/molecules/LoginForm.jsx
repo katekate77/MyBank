@@ -22,7 +22,7 @@ const LoginForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include',  // Include if you're using session-based authentication
+        credentials: 'include',  
         body: JSON.stringify(credentials),
       });
   
