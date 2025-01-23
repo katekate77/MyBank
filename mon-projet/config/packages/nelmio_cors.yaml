@@ -1,0 +1,16 @@
+nelmio_cors:
+    defaults:
+        allow_origin: ['http://localhost:5174']
+        allow_methods: ['GET', 'POST', 'OPTIONS']
+        allow_headers: ['Content-Type', 'Authorization']
+        expose_headers: ['Authorization']
+        max_age: 3600
+        hosts: []
+        origin_regex: false
+        forced_allow_origin_value: ~
+    paths:
+        '^/':  # Allow CORS for all endpoints
+            allow_origin: ['http://localhost:5174']
+            allow_methods: ['POST', 'GET', 'OPTIONS']
+            allow_headers: ['Content-Type', 'Authorization']
+            max_age: 3600
