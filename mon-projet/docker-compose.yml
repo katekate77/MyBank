@@ -1,0 +1,39 @@
+# docker-compose.yml
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: myBank_backend
+    ports:
+      - "8000:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      APP_ENV: dev
+      DATABASE_URL: "mysql://root:@127.0.0.1:3306/mybank_db?serverVersion=10.4.32-MariaDB&charset=utf8mb4"
+
+  db:
+    image: mysql:8.0
+    container_name: symfony_db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: symfony
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: symfony_phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  db_data:
